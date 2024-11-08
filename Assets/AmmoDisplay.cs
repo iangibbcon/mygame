@@ -8,7 +8,7 @@ using TMPro; //use this instead
 public class AmmoDisplay : MonoBehaviour
 {
     public TextMeshProUGUI ammoText;           
-    public BulletSpawner bulletSpawner;  // bring in this scripts
+    public BulletSpawner bulletSpawner;  // bring in these scripts
 
     void Start()
     {

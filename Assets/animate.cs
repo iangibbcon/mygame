@@ -31,7 +31,7 @@ public class animate : MonoBehaviour
 
         } else
         {
-            SR.color = Color.red;
+            SR.color = Color.red; 
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {

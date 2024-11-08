@@ -1,3 +1,52 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class Bullet : MonoBehaviour
+
+// all of this should only  be used for the enemy bullets
+{
+
+    public float speed = 5f; // same as the player
+    public int damage = 1;  // 1 damage per shot
+void Start()
+    {
+        // go left
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.left * speed;
+    }
+
+    void Update()
+    {
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            // damage script
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+            }
+
+            // remove the bullet once you get hit
+            Destroy(gameObject);
+        }
+
+        
+    }
+}
+
+
+
+
+
+
+//get rid of this because it doesn't work
+
 /*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

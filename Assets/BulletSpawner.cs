@@ -11,7 +11,7 @@ public class BulletSpawner : MonoBehaviour
 
     void Start()
     {
-        reloadSystem = new ReloadSystem(4, 3f); // Initialize with 4 bullets and 3-second reload time
+        reloadSystem = new ReloadSystem(4, 3f); // start out with 4 bullets, reload time of 3 seconds
     }
 
     void Update()
@@ -35,14 +35,14 @@ public class BulletSpawner : MonoBehaviour
 
     void FireBullet()
     {
-        // Instantiate a new bullet at the spawn point
+        
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
 
-        // Get the Rigidbody2D of the bullet and set its velocity to move to the right
+        // player bullets always go right
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = Vector2.right * bulletSpeed;
 
-        // Destroy the bullet after 5 seconds to avoid memory leaks
+        // stop bullets from spamming the hierarchy
         Destroy(bullet, 5f);
     }
 }
@@ -51,7 +51,7 @@ public class BulletSpawner : MonoBehaviour
 
 
 
-
+//none of this works
 /*using System.Collections;
 using UnityEngine;
 
